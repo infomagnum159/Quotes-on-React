@@ -1,4 +1,3 @@
-
 export const CATEGORY = [
     {title: 'Famous people', category: 'famous-people'},
     {title: 'Humour', category: 'humour'},
