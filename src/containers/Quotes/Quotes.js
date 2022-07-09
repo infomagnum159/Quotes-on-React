@@ -14,12 +14,13 @@ const Quotes = props => {
 
 
     useEffect(() => {
-        const getQuotes = async () => {
+        const fetchData = async () => {
             try {
                 const quotesResponse = await axiosApi
-                    .get(`${category ?  `/quotes.json?orderBy="category"&equalTo="${category}"` : '/quotes.json'}`);
+                (`${category ?  `/quotes.json?orderBy="category"&equalTo="${category}"` : '/quotes.json'}`);
                 const QuotesCopy = Object.keys(quotesResponse.data)
                     .map(quote => ({
+
                         ...quotesResponse.data[quote],
                         id: quote
                     }));
@@ -28,8 +29,9 @@ const Quotes = props => {
                 setLoading(false);
             }
         }
-        getQuotes().catch(console.error);
+        fetchData().catch(console.error);
     }, [category]);
+
 
     let quotesList = (
         <div className="quotesList">
@@ -40,7 +42,6 @@ const Quotes = props => {
                     text={quote.text}
                     key={quote.id}
                     id={quote.id}
-
                 />
             ))}
         </div>
